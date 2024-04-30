@@ -105,7 +105,8 @@ from typing import Generator
 now_dir = os.getcwd()
 sys.path.insert(0, now_dir)
 sys.path.append("%s/GPT_SoVITS" % (now_dir))
-
+import nltk
+nltk.data.path.insert(0, now_dir+"/nltk_data")
 import argparse
 import subprocess
 import wave
@@ -117,8 +118,6 @@ from fastapi.responses import StreamingResponse, JSONResponse
 from fastapi import FastAPI, UploadFile, File
 import uvicorn
 from io import BytesIO
-import nltk
-nltk.data.path.append("nltk_data")
 from tools.i18n.i18n import I18nAuto
 from GPT_SoVITS.TTS_infer_pack.TTS import TTS, TTS_Config
 from GPT_SoVITS.TTS_infer_pack.text_segmentation_method import get_method_names as get_cut_method_names
